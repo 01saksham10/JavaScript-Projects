@@ -1,0 +1,69 @@
+<!-- Running JavaScript code using an HTML  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //  Return Computer Choice
+        function getComputerChoice() {
+            const choices = ["rock", "paper", "scissors"];
+            const token = Math.floor(Math.random() * 3);
+            return choices[token];
+
+        }
+        // Return Player Choice
+        function getPlayerChoice() {
+            // return "rock";
+            const choice = prompt("Enter rock, paper or scissors:").toLowerCase();
+            // return choice;
+            if( choice==="rock" || choice ==="paper" || choice ==="scissors"){
+                return choice;
+            }else{
+                console.log("Invalid Choice! Please enter rock, paper, Scissors");
+                return getPlayerChoice();
+            }
+        }
+        // Return Who Won
+        function getWinner(player, computer) {
+            if (player === computer) {
+                return "draw";
+            }
+            else if (player === "rock" && computer === "scissors" || player === "paper" && computer === "rock" || player === "scissors" && computer === "paper") {
+                return "win";
+            }
+            else {
+                return "lose";
+            }
+        }
+        // 
+        function playGame() {
+            const player = getPlayerChoice();
+            const computer = getComputerChoice();
+            const result = getWinner(player, computer);
+
+            if (result === "win") {
+                console.log(`You picked ${player} and computer picked ${computer}. 
+                You Win!`);
+            }
+            else if (result === "lose") {
+                console.log(`You picked ${player} and computer picked ${computer}. 
+                You Lose!`);
+            }
+            else if (result === "draw") {
+                console.log(`You picked ${player} and computer picked ${computer}. 
+                Draw!`);
+                playGame();
+            }
+        }
+        playGame();
+
+    </script>
+</body>
+
+</html>
